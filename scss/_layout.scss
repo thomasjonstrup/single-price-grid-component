@@ -1,0 +1,240 @@
+// Reset
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+/* html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+hr {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+ */
+html {
+	/* font-size: 62.5%; */
+	font-size: 16px;
+}
+
+/* * {
+  box-sizing: border-box;
+} */
+
+body {
+	font-family: var(--font);
+	/* 	font-size: 1.6rem; */
+	/* 	font-size: 16px; */
+	background-color: var(--light-grey);
+}
+
+@use "sass:math" as math;
+
+/* @function rem($size) {
+  @return $size / 16px * 1rem;
+} */
+
+@function calculateRem($size) {
+	$remSize: $size / 16px;
+	@return #{$remSize}rem;
+}
+
+@mixin smUp {
+	@media (min-width: 768px) {
+		@content;
+	}
+	/* 	@media (min-width: calculateRem(768px)) {
+		@content;
+	} */
+}
+@mixin mb {
+	@media (max-width: 768px) {
+		@content;
+	}
+	/* 	@media (min-width: calculateRem(768px)) {
+		@content;
+	} */
+}
+
+.flex-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.panel {
+	//max-width: 720px;
+	background-color: white;
+	max-width: calculateRem(650px);
+	/* 	margin: var(--space-lg) auto; */
+	border-radius: var(--rounded-sm);
+	overflow: hidden;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	line-height: 1.6rem;
+
+	@include mb {
+		margin: var(--space-lg);
+
+		grid-template-columns: 1fr
+	}
+
+	&__item {
+		padding: var(--space-md) var(--space-lg);
+	}
+
+	&__heading {
+		font-size: 1.4rem;
+
+		&--small {
+			font-size: 1.1rem;
+		}
+
+		&--primary {
+			color: var(--primary-color);
+		}
+		&--secondary {
+			color: var(--secondary-color);
+		}
+	}
+
+	&__top {
+		grid-column: span 2;
+
+		@include mb {
+			grid-column: span 1;
+		}
+	}
+	&__text {
+		font-size: 1rem;
+		&--white {
+			color: white;
+		}
+		&--light-white {
+			color: var(--light-white);
+		}
+
+		&--lighter-white {
+			color: var(--lighter-white);
+		}
+		&--grayish-blue {
+			color: var(--grayish-blue);
+		}
+	}
+
+	/* 	&__description {
+		white-space: pre-line;
+	} */
+
+	&__left {
+		background-color: var(--primary-color);
+		color: white;
+
+		/* 		p {
+			color: var(--light-white);
+		} */
+
+		span {
+			font-size: 1.8rem;
+			font-weight: 700;
+			color: white;
+			padding-right: 1rem;
+		}
+	}
+	&__right {
+		background-color: var(--primary-color-light);
+		color: white;
+	}
+	/* width: calc(20 * 16px) */
+}
+
+.panel__text__left {
+	display: flex;
+}
+
+.heading {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: var(--space-md);
+}

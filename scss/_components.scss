@@ -1,0 +1,17 @@
+.btn {
+	background: var(--secondary-color);
+	width: 100%;
+	border-radius: var(--rounded-sm);
+	height: 48px;
+	box-shadow: var(--shadow);
+	border: none;
+	outline: none;
+	color: white;
+	cursor: pointer;
+
+	margin-top: 33px;
+
+	&:hover {
+		background: $hover-color;
+	}
+}
